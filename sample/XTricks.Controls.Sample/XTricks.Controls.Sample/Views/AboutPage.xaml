@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XTricks.Controls.Sample.Views.AboutPage"
+             xmlns:vm="clr-namespace:XTricks.Controls.Sample.ViewModels"
+             xmlns:buttons="clr-namespace:XTricks.Controls.Buttons;assembly=XTricks.Controls"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <vm:AboutViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#96d1ff</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackLayout BackgroundColor="{StaticResource Accent}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
+                    <Image Source="xamarin_logo.png" VerticalOptions="Center" HeightRequest="64" />
+                </ContentView>
+            </StackLayout>
+        </StackLayout>
+        <StackLayout Grid.Row="1">
+
+            <buttons:ConfirmationButton HeightRequest="100"
+                                        BackgroundColor="#E11587"
+                                        ConfirmationBackgroundColor="Black"
+                                        TextColor="White"
+                                        WidthRequest="200"
+                                        Margin="50"
+                                        Text="Click me!"
+                                        TimeoutSeconds="3"
+                                        CornerRadius="25"
+                                        ConfirmCommand="{Binding SubmitCommand}"
+                                        ConfirmCommandParameter="{Binding Title}"
+                                        ConfirmationText="Its your last chance"/>
+
+        </StackLayout>
+    </Grid>
+
+</ContentPage>
